@@ -333,66 +333,66 @@ declare namespace WebdriverIO {
         duration: any;
     }
 
-    interface Hooks {
-        onError?<T>(error: Error): Promise<T> & undefined;
+    interface Hooks<T> {
+        onError?(error: Error): Promise<T> & undefined;
 
-        onPrepare?<T>(
+        onPrepare?(
             config: Options,
             capabilities: DesiredCapabilities
         ): Promise<T> & undefined;
 
-        onComplete?<T>(exitCode: number): Promise<T> & undefined;
+        onComplete?(exitCode: number): Promise<T> & undefined;
 
-        before?<T>(
+        before?(
             capabilities: DesiredCapabilities,
             specs: string[]
         ): Promise<T> & undefined;
 
-        beforeCommand?<T>(
+        beforeCommand?(
             commandName: string,
             args: any[]
         ): Promise<T> & undefined;
 
-        beforeFeature?<T>(feature: string): Promise<T> & undefined;
-        beforeHook?<T>(): Promise<T> & undefined;
-        beforeScenario?<T>(scenario: string): Promise<T> & undefined;
+        beforeFeature?(feature: string): Promise<T> & undefined;
+        beforeHook?(): Promise<T> & undefined;
+        beforeScenario?(scenario: string): Promise<T> & undefined;
 
-        beforeSession?<T>(
+        beforeSession?(
             config: Options,
             capabilities: DesiredCapabilities,
             specs: string[]
         ): Promise<T> & undefined;
 
-        beforeStep?<T>(step: string): Promise<T> & undefined;
-        beforeSuite?<T>(suite: Suite): Promise<T> & undefined;
-        beforeTest?<T>(test: Test): Promise<T> & undefined;
-        afterHook?<T>(): Promise<T> & undefined;
+        beforeStep?(step: string): Promise<T> & undefined;
+        beforeSuite?(suite: Suite): Promise<T> & undefined;
+        beforeTest?(test: Test): Promise<T> & undefined;
+        afterHook?(): Promise<T> & undefined;
 
-        after?<T>(
+        after?(
             result: number,
             capabilities: DesiredCapabilities,
             specs: string[]
         ): Promise<T> & undefined;
 
-        afterCommand?<T>(
+        afterCommand?(
             commandName: string,
             args: any[],
             result: any,
             error?: Error
         ): Promise<T> & undefined;
 
-        afterScenario?<T>(scenario: any): Promise<T> & undefined;
+        afterScenario?(scenario: any): Promise<T> & undefined;
 
-        afterSession?<T>(
+        afterSession?(
             config: Options,
             capabilities: DesiredCapabilities,
             specs: string[]
         ): Promise<T> & undefined;
 
-        afterStep?<T>(stepResult: any): Promise<T> & undefined;
-        afterSuite?<T>(suite: Suite): Promise<T> & undefined;
-        afterTest?<T>(test: Test): Promise<T> & undefined;
-        afterFeature?<T>(feature: string): Promise<T> & undefined;
+        afterStep?(stepResult: any): Promise<T> & undefined;
+        afterSuite?(suite: Suite): Promise<T> & undefined;
+        afterTest?(test: Test): Promise<T> & undefined;
+        afterFeature?(feature: string): Promise<T> & undefined;
     }
 
     interface Options {
@@ -444,7 +444,7 @@ declare namespace WebdriverIO {
         [name: string]: Options;
     }
 
-    interface Config extends Options, Hooks { }
+    interface Config<T> extends Options, Hooks<T> { }
 
     interface Client<T> {
         desiredCapabilities: DesiredCapabilities;
